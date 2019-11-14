@@ -3,6 +3,10 @@ package lijianan.cms.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+
+
+
+
 public class Article implements Serializable{
     /**
 	 * @fieldName: serialVersionUID
@@ -40,6 +44,12 @@ public class Article implements Serializable{
     private String keywords;
 
     private String original;
+    
+    private User user ;//作者
+    
+    private Channel channel ;//栏目
+    
+    private Category category;//分类
 
     public Integer getId() {
         return id;
@@ -160,6 +170,30 @@ public class Article implements Serializable{
     public void setOriginal(String original) {
         this.original = original == null ? null : original.trim();
     }
+    
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Channel getChannel() {
+		return channel;
+	}
+
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	@Override
 	public int hashCode() {

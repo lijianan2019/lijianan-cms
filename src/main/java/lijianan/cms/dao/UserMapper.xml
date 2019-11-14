@@ -18,6 +18,18 @@
     id, username, password, nickname, birthday, gender, locked, created, updated, role, 
     url
   </sql>
+  <!-- 查询列表即根据姓名模糊查询 -->
+  <select id="selects" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"></include> from cms_user
+  	<where>
+  	<if test="username!=null and username!=''">
+  		username like '%${username}%'
+  	</if>
+  		
+  	</where>
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

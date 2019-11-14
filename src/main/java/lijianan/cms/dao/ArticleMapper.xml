@@ -17,6 +17,12 @@
     <result column="content_type" property="contentType" jdbcType="INTEGER" />
     <result column="keywords" property="keywords" jdbcType="VARCHAR" />
     <result column="original" property="original" jdbcType="VARCHAR" />
+    	<!-- 作者 -->
+	  <association property="user" javaType="user" select="lijianan.cms.dao.UserMapper.selectByPrimaryKey" column="user_id"></association>
+	  <!-- 所属栏目 -->		
+	  <association property="channel" javaType="channel" select="lijianan.cms.dao.ChannelMapper.selectByPrimaryKey" column="channel_id"></association>	
+	  <!-- 所属分类 -->	
+	  <association property="category" javaType="category" select="lijianan.cms.dao.CategoryMapper.selectByPrimaryKey" column="category_id"></association>		
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="lijianan.cms.domain.ArticleWithBLOBs" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
@@ -29,6 +35,25 @@
   <sql id="Blob_Column_List" >
     content, summary
   </sql>
+  
+  <!-- 文章列表查询 -->
+  <select id="selects" resultMap="BaseResultMap">
+  
+  select<include refid="Base_Column_List"></include> from cms_article
+  		<where>
+			<if test="title!=null and title!=''">
+				title like "%" #{title} "%"
+			</if>
+			<if test="status!=null">
+			 and  status =#{status}
+			</if>
+
+		</where>
+  
+  </select>
+  
+  
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

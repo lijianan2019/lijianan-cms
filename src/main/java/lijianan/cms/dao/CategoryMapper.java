@@ -1,8 +1,20 @@
 package lijianan.cms.dao;
 
+import java.util.List;
+
 import lijianan.cms.domain.Category;
 
 public interface CategoryMapper {
+	/**
+	 * 
+	 * @Title: selectByChannelId 
+	 * @Description: 通过栏目查找对应的分类
+	 * @param ChannelId
+	 * @return
+	 * @return: List<Category>
+	 */
+	List<Category> selectByChannelId(Integer ChannelId);
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(Category record);

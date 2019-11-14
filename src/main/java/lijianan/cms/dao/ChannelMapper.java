@@ -1,8 +1,19 @@
 package lijianan.cms.dao;
 
+import java.util.List;
+
 import lijianan.cms.domain.Channel;
 
 public interface ChannelMapper {
+	/**
+	 * 
+	 * @Title: selects 
+	 * @Description: 查询Channel
+	 * @return
+	 * @return: List<Channel>
+	 */
+	List<Channel> selects();
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(Channel record);
