@@ -12,7 +12,7 @@
 
 
 	<!-- 1、注解扫描器 -->
-	<context:component-scan base-package="lijianan.cms" >
+	<context:component-scan base-package="com.lijianan.cms" >
 		<!-- 排除要要扫描的controller -->
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -73,7 +73,7 @@
 	<aop:config>
 		<!-- 配置切点表达式 -->
 		<aop:pointcut
-			expression="execution(* lijianan.cms.service.impl.*.*(..))" id="pointcut" />
+			expression="execution(* com.lijianan.cms.service.impl.*.*(..))" id="pointcut" />
 		<!-- 关联事务 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
 
@@ -83,7 +83,7 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- basePackage :mapper接口所在的包 -->
-		<property name="basePackage" value="lijianan.cms.dao"></property>
+		<property name="basePackage" value="com.lijianan.cms.dao"></property>
 
 	</bean>
 

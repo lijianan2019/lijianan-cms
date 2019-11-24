@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 	<!-- 扫描器 -->
 	<context:component-scan
-		base-package="lijianan.cms.controller"></context:component-scan>
+		base-package="com.lijianan.cms.controller"></context:component-scan>
 	<!-- 视图解析图 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -17,20 +17,38 @@
 		<!-- 配置后缀 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-		<!-- 拦截器 -->
-	<!-- <mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/login"/>
-			<bean class="com.bw.interceptor.MyInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors> -->
+	<!-- 自定义拦截器 -->
+	 <mvc:interceptors>
+	 <!--  管理员后台拦截器 -->
+	 <mvc:interceptor>
+	   <!--   拦截规则 -->
+	    <mvc:mapping path="/admin/**"/>
+	   <!--  不拦截规则 -->
+	    <mvc:exclude-mapping path="/resource/**"/>
+	  <!--   拦截器处理类 -->
+	    <bean class="com.lijianan.cms.util.AdminInterceptor"/>
+	 
+	 </mvc:interceptor>
+	 <!-- 个人中心后台拦截器 -->
+	 <mvc:interceptor>
+	    <!--  拦截规则 -->
+	    <mvc:mapping path="/my/**"/>
+	  <!--   不拦截规则 -->
+	    <mvc:exclude-mapping path="/resource/**"/>
+	    <!-- 拦截器处理类 -->
+	    <bean class="com.lijianan.cms.util.MyInterceptor"/>
+	 
+	 </mvc:interceptor>
+
+	</mvc:interceptors> 
+	
+	
 	<!-- 不拦截静态资源 -->
 	<mvc:default-servlet-handler />
 	<!-- mvc注解驱动 -->
 	<mvc:annotation-driven/>
 	<!-- 文件上传的处理类 -->
-	<!-- <bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean> -->
+	 <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean> 
 
 </beans>

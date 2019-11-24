@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <!-- 别名配置 -->
  <typeAliases>
-   <package name="lijianan.cms.domain"/>
+   <package name="com.lijianan.cms.domain"/>
  </typeAliases>
  
  

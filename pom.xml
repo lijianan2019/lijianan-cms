@@ -216,12 +216,15 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<!-- java转json的工具类 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.5</version>
 		</dependency>
 		<!-- 引用自己的工具类包 -->
+
+
 
 		<dependency>
 			<groupId>com.bwie</groupId>
@@ -261,8 +264,18 @@
 						<port>2000</port>
 						<!-- 访问路径 -->
 						<host>localhost</host>
-						
 					</httpConnector>
+					
+					<contextHandlers>
+					 <jettyWebAppContext>
+					  <!-- 虚拟路径 -->
+					   <contextPath>/pic/</contextPath>
+					   <!-- 物理路径 -->
+					   <resourceBase>/resource/pic/</resourceBase>
+					 </jettyWebAppContext>
+					</contextHandlers>
+					
+					<!-- 间隔扫描时间 -->
 					<scanIntervalSeconds>1</scanIntervalSeconds>
 				</configuration>
 
