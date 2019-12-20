@@ -153,7 +153,7 @@ public class ArticleServiceImpl implements ArticleService {
 		try {
 			int result=m.updateByPrimaryKeySelective(article);
 			//审核通过文章
-			if(result > 0 && article.getStatus() != null && article.getStatus() == 1) {
+			if(result > 0) {
 				//判断当前要审核文章
 				//审核文章通过以后，要清空redis中对应的数据
 				
