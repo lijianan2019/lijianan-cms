@@ -217,6 +217,7 @@ public class MyController {
 		article.setHits(0);
 		article.setHot(0);
 		article.setDeleted(0);
+		article.setContentType(0);
 		article.setCreated(new Date());
 		article.setUpdated(new Date());
 
@@ -281,6 +282,7 @@ public class MyController {
 		article.setHits(0);
 		article.setHot(0);
 		article.setDeleted(0);
+		article.setContentType(0);
 		article.setCreated(new Date());
 		article.setUpdated(new Date());
 		// 图片集标识

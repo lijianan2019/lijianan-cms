@@ -42,7 +42,7 @@
 			<hr>
 			<dd id="mc">
 
-				<c:if test="${isCollect==1}">
+				 <c:if test="${isCollect==1}">
 					<span style="font-size: 20px; color: red">★ (已收藏)</span>
 				</c:if>
 				

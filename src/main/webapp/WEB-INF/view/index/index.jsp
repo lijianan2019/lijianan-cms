@@ -240,7 +240,7 @@
 	<script type="text/javascript">
 		//分页
 		function goPage(page) {
-			var url = "/?page=" + page
+			var url = "/?page=" + page + "&channelId=" + '${article.channelId}' + "&key=${key}"
 			location = url;
 		}
 	</script>

@@ -86,5 +86,12 @@
 		<property name="basePackage" value="com.lijianan.cms.dao"></property>
 
 	</bean>
-
+	<!-- 导入redis -->
+	<import resource="spring-redis.xml"/>
+	<!-- 导入kafka生产者 -->
+	<import resource="spring-kafka-producer.xml"/>
+	<!-- 导入kafka消费者 -->
+	<import resource="spring-redis.xml"/>
+	<!-- 导入elaticsearch -->
+	<import resource="spring-es.xml"/>
 </beans>

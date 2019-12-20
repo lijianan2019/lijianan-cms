@@ -16,7 +16,28 @@ public interface ArticleService {
 	 * @return: PageInfo<Article>
 	 */
 	PageInfo<Article> selects(Article article,Integer page,Integer pageSize);
-	
+	/**
+	 * 
+	 * @Title: selectLast 
+	 * @Description: 最新文章和redis整合
+	 * @param article
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 * @return: PageInfo<Article>
+	 */
+	PageInfo<Article> selectLast(Article article,Integer page,Integer pageSize);
+	/**
+	 * 
+	 * @Title: selectLast 
+	 * @Description: 热门文章和redis整合
+	 * @param article
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 * @return: PageInfo<Article>
+	 */
+	PageInfo<Article> selectHot(Article article,Integer page,Integer pageSize);
 	/**
 	 * 
 	 * @Title: selectByPrimaryKey 
@@ -46,4 +67,15 @@ public interface ArticleService {
 	 * @return: boolean
 	 */
 	boolean insertSelective(ArticleWithBLOBs article);
+	/**
+	 * 
+	 * @Title: selectEs 
+	 * @Description: 高亮查询
+	 * @param page
+	 * @param pageSize
+	 * @param key
+	 * @return
+	 * @return: PageInfo<Article>
+	 */
+	PageInfo<Article> selectEs(Integer page, Integer pageSize, String key);
 }

@@ -4,7 +4,8 @@
   
   <insert id="insert">
   
-  insert into cms_collect (text,url,created,user_id)values(#{text},#{url},#{created},${user.id})
+  insert into 
+ (text,url,created,user_id)values(#{text},#{url},#{created},${user.id})
   
   </insert>
   

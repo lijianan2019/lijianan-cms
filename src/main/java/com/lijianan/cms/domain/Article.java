@@ -3,19 +3,24 @@ package com.lijianan.cms.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
 
 
 
+@Document(indexName="cms" , type="article")
 public class Article implements Serializable{
     /**
 	 * @fieldName: serialVersionUID
 	 * @fieldType: long
 	 * @Description: 文章实体类
 	 */
+	
 	private static final long serialVersionUID = 1L;
-
+	@Id
 	private Integer id;
-
+	@Field(index=true,analyzer="ik_smart",searchAnalyzer="ik_smart",store=true)
     private String title;
 
     private String picture;

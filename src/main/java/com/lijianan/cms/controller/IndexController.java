@@ -64,12 +64,12 @@ public class IndexController {
 	 */
 	@RequestMapping(value = { "", "/", "index" })
 	public String index(Article article, Model model, @RequestParam(defaultValue = "1") Integer page,
-			@RequestParam(defaultValue = "5") Integer pageSize) {
+			@RequestParam(defaultValue = "5") Integer pageSize,String key) {
 		// 访问方法开始时间
 		long s1 = System.currentTimeMillis();
-
 		article.setStatus(1);// 显示审审核过的文章
 		article.setDeleted(0);// 查询未删除的
+		article.setContentType(0);//未收藏的
 		article.setContentType(ArticleEnum.HTML.getCode());
 		Thread t1 = null;
 		Thread t2 = null;
@@ -92,6 +92,13 @@ public class IndexController {
 
 			@Override
 			public void run() {
+				
+				if(key!=null && !key.trim().equals("")) {
+					//如果搜索条件不为空，则进行高亮显示
+					PageInfo<Article> info = articleService.selectEs(page, pageSize,key);
+					model.addAttribute("info", info);
+					model.addAttribute("key", key);
+				}else {
 
 				// 如果栏目为空则默认显示热点
 				if (article.getChannelId() == null) {
@@ -100,10 +107,12 @@ public class IndexController {
 					hot.setStatus(1);// 审核过的
 					hot.setHot(1);// 热点文章
 					hot.setDeleted(0);//
+					article.setContentType(0);//未收藏的
 					hot.setContentType(ArticleEnum.HTML.getCode());
-					PageInfo<Article> info = articleService.selects(hot, page, pageSize);
+					PageInfo<Article> info = articleService.selectHot(hot, page, pageSize);
 					model.addAttribute("info", info);
 				}
+			}
 			}
 		});
 
@@ -134,7 +143,7 @@ public class IndexController {
 				lastArticle.setDeleted(0);
 				lastArticle.setContentType(ArticleEnum.HTML.getCode());
 				;//
-				PageInfo<Article> lastInfo = articleService.selects(lastArticle, 1, 5);
+				PageInfo<Article> lastInfo = articleService.selectLast(lastArticle, 1, 5);
 				model.addAttribute("lastInfo", lastInfo);
 
 			}

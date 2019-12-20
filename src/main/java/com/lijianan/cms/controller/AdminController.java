@@ -141,7 +141,7 @@ public class AdminController {
 			@RequestParam(defaultValue = "3") Integer pageSize) {
 	
 		PageInfo<Article> info = articleService.selects(article, page, pageSize);
-		model.addAttribute("info", info);// 封装的查询结国
+		model.addAttribute("info", info);// 封装的查询结果
 		model.addAttribute("article", article);// 封装的查询
 
 		return "admin/article/articles";
